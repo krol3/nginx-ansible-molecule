@@ -1,5 +1,12 @@
 ---
 # tasks file for nginx
+- name: Creating user "{{ uusername }}" with admin access
+  user:
+    name: "{{ uusername }}"
+    createhome: yes
+    password: "{{ upassword | password_hash('sha512') }}"
+    state: present
+
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
@@ -32,7 +39,13 @@
   notify:
     - reload nginx
 
+- name: Install NGINX
+  package:
+    name: nginx
+    state: latest
+  notify: "restart nginx"
+
 - name: Ensure nginx is started and enabled to start at boot.
-  service: name=nginx state=started
-#   systemd: name=nginx state=started
-#  shell: service nginx restart && chkconfig nginx on
+  service:
+    name: nginx
+    state: started

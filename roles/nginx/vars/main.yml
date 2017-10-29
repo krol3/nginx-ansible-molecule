@@ -1,4 +1,6 @@
 ---
+uusername: devops
+upassword: devops
 # vars file for nginx
 nginx_use_service: False
 # Used only for Debian/Ubuntu installation, as the -t option for apt.

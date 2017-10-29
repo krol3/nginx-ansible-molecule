@@ -8,8 +8,8 @@ lint:
 platforms:
   - name: ubuntu_test
     image: ubuntu
-  - name: cento_test
-    image: centos:7
+  # - name: cento_test
+  #   image: centos:7
 provisioner:
   name: ansible
   lint:

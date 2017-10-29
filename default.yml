@@ -1,6 +1,13 @@
 - hosts: localhost
-  become: yes
-  become_user: root
+  # become: yes
+  # become_user: root
+
+  vars:
+    nginx_remove_default_vhost: true
+    nginx_vhosts:
+      - server_name: "test.dev"
+        root: "/var/www/test"
+
   roles:
 #    - common
     - swap

@@ -3,12 +3,9 @@
 ---
 all:
   hosts:
-    cento_test: &id001
-      ansible_connection: docker
-    ubuntu_test: &id002
+    ubuntu_test: &id001
       ansible_connection: docker
 ungrouped:
   hosts:
-    cento_test: *id001
-    ubuntu_test: *id002
+    ubuntu_test: *id001
   vars: {}
